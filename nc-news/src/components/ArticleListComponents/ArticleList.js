@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../../api";
+import { Link } from "@reach/router";
 
 export default class ArticleList extends Component {
   state = {
@@ -18,8 +19,18 @@ export default class ArticleList extends Component {
           return (
             <li className="listContainer" key={article.article_id}>
               <div className="listVotes">{article.votes}</div>
-              <div className="listTitle">{article.title}</div>
-              <div className="listComments">{article.comment_count}</div>
+              <Link
+                to={`/${article.topic}/${article.article_id}/${article.title}`}
+                className="listTitle"
+              >
+                {article.title}
+              </Link>
+              <Link
+                to={`/comments/${article.topic}/${article.article_id}/${article.title}`}
+                className="listComments"
+              >
+                {article.comment_count}
+              </Link>
             </li>
           );
         })}

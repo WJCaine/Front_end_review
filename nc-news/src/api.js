@@ -8,8 +8,23 @@ export const getArticles = (sort_by, topic) => {
     .get("/articles", {
       params: {
         sort_by,
-        topic
+        topic,
+        limit: 50
       }
     })
     .then(({ data }) => data.articles);
+};
+
+export const getArticle = article_id => {
+  return instance
+    .get(`articles/${article_id}`, {
+      params: {}
+    })
+    .then(({ data }) => data.article);
+};
+
+export const getComments = article_id => {
+  return instance
+    .get(`articles/${article_id}/comments`)
+    .then(({ data }) => data.comments);
 };
