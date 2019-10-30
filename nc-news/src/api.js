@@ -4,6 +4,7 @@ const instance = axios.create({
 });
 
 export const getArticles = (sort_by, topic) => {
+  if (topic === "all") topic = "";
   return instance
     .get("/articles", {
       params: {
@@ -27,4 +28,34 @@ export const getComments = article_id => {
   return instance
     .get(`articles/${article_id}/comments`)
     .then(({ data }) => data.comments);
+};
+export const patchArticle = (article_id, num) => {
+  return instance
+    .patch(`/articles/${article_id}`, {
+      inc_votes: num
+    })
+    .then(({ data }) => data.article);
+};
+
+export const getTopics = () => {
+  return instance.get(`/topics`).then(({ data }) => data.topics);
+};
+export const patchComment = (comment_id, num) => {
+  return instance
+    .patch(`/comments/${comment_id}`, {
+      inc_votes: num
+    })
+    .then(({ data }) => data.comment);
+};
+export const deleteComment = comment_id => {
+  return instance.delete(`/comments/${comment_id}`);
+};
+
+export const postComment = (article_id, username, body) => {
+  return instance
+    .post(`/articles/${article_id}/comments`, {
+      username,
+      body
+    })
+    .then(({ data }) => data.comment);
 };

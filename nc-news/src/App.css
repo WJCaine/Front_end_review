@@ -18,13 +18,47 @@
 }
 
 .App-link {
-  color: #09d3ac;
+  color: #e9f1f0;
 }
 
 .listContainer {
+  margin: 25px 0;
   display: grid;
+  grid-template-areas: "votes title comments";
   grid-template-columns: 1fr 8fr 1fr;
+  background-color: grey;
 }
 .listComments {
   text-align: center;
+  vertical-align: middle;
+}
+.listTitle {
+  vertical-align: middle;
+}
+
+.listVotes {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  text-align: center;
+}
+
+#wholeApp {
+  background-image: linear-gradient(#080808, #262626);
+  color: azure;
+}
+#articleList {
+  margin: 10px;
+}
+.commentContainer {
+  margin: 25px 0;
+  display: grid;
+  grid-template-areas: "votes title comments";
+  grid-template-columns: 1fr 1fr 8fr;
+  background-color: grey;
+}
+.downvoted {
+  background-color: crimson;
+}
+.upvoted {
+  background-color: aqua;
 }
