@@ -8,6 +8,7 @@ import Comments from "./components/CommentsComponents/Comments";
 import Sort from "./components/Sort";
 import NavBar from "./components/NavBar";
 import Login from "./components/Login";
+import DisplayError from "./DisplayError";
 
 export default class App extends Component {
   state = {
@@ -28,8 +29,10 @@ export default class App extends Component {
       <div id="wholeApp">
         <Header />
         <NavBar />
-        <Login changeUser={this.changeUser} user={this.state.user} />
-        <Sort changeSort={this.changeSort} />
+        <div className="headGrid">
+          <Sort changeSort={this.changeSort} />
+          <Login changeUser={this.changeUser} user={this.state.user} />
+        </div>
         <Router>
           <ArticleList sort={this.state.sort} path="/" />
           <ArticleList sort={this.state.sort} path="/articles" />
@@ -38,6 +41,10 @@ export default class App extends Component {
           <Comments
             path="comments/:topic/:article_id/:article_name"
             user={this.state.user}
+          />
+          <DisplayError
+            default
+            err={{ msg: { msg: "No page found with this url" }, status: 404 }}
           />
         </Router>
       </div>

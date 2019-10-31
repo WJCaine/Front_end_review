@@ -62,3 +62,16 @@
 .upvoted {
   background-color: aqua;
 }
+.NavBar {
+  text-align: center;
+  word-spacing: 20px;
+  background-color: grey;
+}
+.headGrid {
+  display: grid;
+  grid-template-areas: "sort signIn";
+  grid-template-columns: 2fr 3fr;
+}
+#signIn {
+  text-align: right;
+}

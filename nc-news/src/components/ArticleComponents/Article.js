@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../../api";
-import * as errorFuncs from "../../ErrorFuncs";
 import { Link } from "@reach/router";
+import DisplayError from "../../DisplayError";
 
 export default class Article extends Component {
   state = {
@@ -22,7 +22,7 @@ export default class Article extends Component {
   }
   render() {
     const { article, err } = this.state;
-    if (err) return errorFuncs.displayError(err);
+    if (err) return <DisplayError err={err} />;
     return (
       <>
         {this.state.Loaded ? (
@@ -33,7 +33,7 @@ export default class Article extends Component {
               Posted by : {article.author} to{" "}
               <Link to={`/${article.topic}`}>{article.topic}</Link>
             </h3>{" "}
-            <p>{article.body}</p>{" "}
+            <p>{article.body}</p>
           </>
         ) : (
           <p>Loading ...</p>

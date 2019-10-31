@@ -9,7 +9,7 @@ export default class Comments extends Component {
   state = {
     comments: [],
     Loaded: false,
-    voteState: 0
+    voteState: []
   };
   handleChange = event => {
     const { value } = event.target;
@@ -22,28 +22,57 @@ export default class Comments extends Component {
     });
   };
   componentDidMount() {
-    api.getComments(this.props.article_id).then(comments => {
-      this.setState({ comments, Loaded: true });
-    });
+    api
+      .getComments(this.props.article_id)
+      .then(comments => {
+        this.setState({ comments, Loaded: true });
+      })
+      .then(() => {
+        this.setState({ voteState: Array(this.state.comments.length).fill(0) });
+      });
   }
   vote = (comment_id, num, index) => {
     const { voteState } = this.state;
-    if (voteState === 1 && num === 1) {
+    if (voteState[index] === 1 && num === 1) {
       num = -1;
-      this.setState({ voteState: 0 });
-    } else if (voteState === 1 && num === -1) {
+      this.setState(currentState => {
+        const newVoteState = [currentState.voteState];
+        newVoteState[index] = 0;
+        return { voteState: newVoteState };
+      });
+    } else if (voteState[index] === 1 && num === -1) {
       num = -2;
-      this.setState({ voteState: -1 });
-    } else if (voteState === -1 && num === -1) {
+      this.setState(currentState => {
+        const newVoteState = [currentState.voteState];
+        newVoteState[index] = -1;
+        return { voteState: newVoteState };
+      });
+    } else if (voteState[index] === -1 && num === -1) {
       num = 1;
-      this.setState({ voteState: 0 });
-    } else if (voteState === -1 && num === 1) {
+      this.setState(currentState => {
+        const newVoteState = [currentState.voteState];
+        newVoteState[index] = 0;
+        return { voteState: newVoteState };
+      });
+    } else if (voteState[index] === -1 && num === 1) {
       num = 2;
-      this.setState({ voteState: 1 });
-    } else if (voteState === 0 && num === 1) {
-      this.setState({ voteState: 1 });
-    } else if (voteState === 0 && num === -1) {
-      this.setState({ voteState: -1 });
+      this.setState(currentState => {
+        const newVoteState = [currentState.voteState];
+        newVoteState[index] = 1;
+        return { voteState: newVoteState };
+      });
+    } else if (voteState[index] === 0 && num === 1) {
+      this.setState(currentState => {
+        const newVoteState = [currentState.voteState];
+        newVoteState[index] = 1;
+        return { voteState: newVoteState };
+      });
+    } else if (voteState[index] === 0 && num === -1) {
+      this.setState(currentState => {
+        const newVoteState = [currentState.voteState];
+        newVoteState[index] = -1;
+        return { voteState: newVoteState };
+      });
     }
     api.patchComment(comment_id, num).then(comment => {
       this.setState(currentState => {

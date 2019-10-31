@@ -13,7 +13,7 @@ export default class NavBar extends Component {
   }
   render() {
     return (
-      <ul>
+      <ul className="NavBar">
         {this.state.topics.map(topic => {
           return (
             <Link key={topic.slug} to={`/${topic.slug}`}>

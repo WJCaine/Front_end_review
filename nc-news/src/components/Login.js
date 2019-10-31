@@ -15,7 +15,7 @@ export default class Login extends Component {
   };
   render() {
     return (
-      <>
+      <div id="signIn">
         {this.props.user ? <h3>Signed in as {this.props.user}</h3> : null}
         <form onSubmit={this.handleSubmit}>
           <label>
@@ -29,7 +29,7 @@ export default class Login extends Component {
           </label>
           <button type="submit">Search</button>
         </form>
-      </>
+      </div>
     );
   }
 }
