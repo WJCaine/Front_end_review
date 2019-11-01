@@ -16,7 +16,7 @@ export default class NavBar extends Component {
       <ul className="NavBar">
         {this.state.topics.map(topic => {
           return (
-            <Link key={topic.slug} to={`/${topic.slug}`}>
+            <Link className="NavItem" key={topic.slug} to={`/${topic.slug}`}>
               {"   "}
               {topic.slug}
               {"  "}

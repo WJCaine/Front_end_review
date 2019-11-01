@@ -13,7 +13,7 @@ export default class Sort extends Component {
     return (
       <form>
         <label>
-          Sort :
+          Sort articles :
           <select onChange={this.handleChange}>
             <option>New</option>
             <option>Top</option>

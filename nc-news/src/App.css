@@ -5,6 +5,10 @@
 .App-logo {
   height: 40vmin;
 }
+.title {
+  text-align: center;
+  color: azure;
+}
 
 .App-header {
   background-color: #282c34;
@@ -18,22 +22,25 @@
 }
 
 .App-link {
-  color: #e9f1f0;
+  color: azure;
 }
 
 .listContainer {
-  margin: 25px 0;
+  margin: 25px 10px;
   display: grid;
-  grid-template-areas: "votes title comments";
-  grid-template-columns: 1fr 8fr 1fr;
+  grid-template-areas: "votes title info comments";
+  grid-template-columns: 1fr 6fr 2fr 1fr;
   background-color: grey;
 }
 .listComments {
   text-align: center;
   vertical-align: middle;
+  color: azure;
 }
 .listTitle {
   vertical-align: middle;
+  font-size: 20px;
+  color: azure;
 }
 
 .listVotes {
@@ -43,24 +50,25 @@
 }
 
 #wholeApp {
-  background-image: linear-gradient(#080808, #262626);
   color: azure;
+  height: 100%;
+  background-image: linear-gradient(#080808, #262626);
 }
 #articleList {
   margin: 10px;
 }
 .commentContainer {
-  margin: 25px 0;
+  margin: 25px 10px;
   display: grid;
-  grid-template-areas: "votes title comments";
-  grid-template-columns: 1fr 1fr 8fr;
+  grid-template-areas: "votes author comments";
+  grid-template-columns: 1fr 2fr 7fr;
   background-color: grey;
 }
 .downvoted {
   background-color: crimson;
 }
 .upvoted {
-  background-color: aqua;
+  background-color: royalblue;
 }
 .NavBar {
   text-align: center;
@@ -71,7 +79,73 @@
   display: grid;
   grid-template-areas: "sort signIn";
   grid-template-columns: 2fr 3fr;
+  margin: 10px 20px;
 }
 #signIn {
   text-align: right;
+}
+#commentAdder {
+  left: 20px;
+}
+#commentAdderGrid {
+  display: grid;
+  grid-template-rows: 4fr 1fr;
+  text-align: center;
+  margin: 10px 10px 0 50px;
+}
+
+.warning {
+  color: red;
+}
+#commentLink {
+  font-size: 30px;
+}
+.NavItem {
+  color: blue;
+}
+#paginator {
+  text-align: center;
+}
+.pageButton {
+  width: 10%;
+}
+
+.table {
+  display: table; /* Allow the centering to work */
+  margin: 0 auto;
+  background-color: inherit;
+  color: azure;
+  text-align: center;
+}
+
+ul#horizontal-list {
+  min-width: 696px;
+  list-style: none;
+  padding-top: 20px;
+  color: azure;
+  text-align: center;
+}
+ul#horizontal-list li {
+  display: inline;
+  margin: 0 1%;
+  color: azure;
+}
+.numbtn {
+  color: white;
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+.user {
+  font-weight: bold;
+  text-align: center;
+}
+.deleteButton {
+  color: blue;
+  background-color: inherit;
+  border: none;
 }

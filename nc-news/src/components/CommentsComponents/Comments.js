@@ -4,6 +4,7 @@ import { Link } from "@reach/router";
 import CommentUpvote from "./CommentUpvote";
 import CommentDownvote from "./CommentDownvote";
 import CommentAdder from "./CommentAdder";
+import * as utils from "../../utils";
 
 export default class Comments extends Component {
   state = {
@@ -36,40 +37,40 @@ export default class Comments extends Component {
     if (voteState[index] === 1 && num === 1) {
       num = -1;
       this.setState(currentState => {
-        const newVoteState = [currentState.voteState];
+        const newVoteState = [...currentState.voteState];
         newVoteState[index] = 0;
         return { voteState: newVoteState };
       });
     } else if (voteState[index] === 1 && num === -1) {
       num = -2;
       this.setState(currentState => {
-        const newVoteState = [currentState.voteState];
+        const newVoteState = [...currentState.voteState];
         newVoteState[index] = -1;
         return { voteState: newVoteState };
       });
     } else if (voteState[index] === -1 && num === -1) {
       num = 1;
       this.setState(currentState => {
-        const newVoteState = [currentState.voteState];
+        const newVoteState = [...currentState.voteState];
         newVoteState[index] = 0;
         return { voteState: newVoteState };
       });
     } else if (voteState[index] === -1 && num === 1) {
       num = 2;
       this.setState(currentState => {
-        const newVoteState = [currentState.voteState];
+        const newVoteState = [...currentState.voteState];
         newVoteState[index] = 1;
         return { voteState: newVoteState };
       });
     } else if (voteState[index] === 0 && num === 1) {
       this.setState(currentState => {
-        const newVoteState = [currentState.voteState];
+        const newVoteState = [...currentState.voteState];
         newVoteState[index] = 1;
         return { voteState: newVoteState };
       });
     } else if (voteState[index] === 0 && num === -1) {
       this.setState(currentState => {
-        const newVoteState = [currentState.voteState];
+        const newVoteState = [...currentState.voteState];
         newVoteState[index] = -1;
         return { voteState: newVoteState };
       });
@@ -103,7 +104,11 @@ export default class Comments extends Component {
         </h2>
         <>
           {this.props.user ? (
-            <CommentAdder addComment={this.addComment} />
+            <CommentAdder
+              addComment={this.addComment}
+              user={this.props.user}
+              article_id={this.props.article_id}
+            />
           ) : (
             <p>You must be logged in to post a comment.</p>
           )}
@@ -129,16 +134,25 @@ export default class Comments extends Component {
                     />
                   </div>
                   <div className="user">
-                    {comment.author}{" "}
-                    {this.props.user === comment.author ? (
-                      <button
-                        onClick={() =>
-                          this.deleteComment(comment.comment_id, index)
-                        }
-                      >
-                        Delete Comment
-                      </button>
-                    ) : null}
+                    <div>{comment.author}</div>
+                    <div>
+                      {utils.secondsToTimeString2(
+                        (new Date() - new Date(comment.created_at)) / 1000
+                      )}{" "}
+                      ago
+                    </div>
+                    <div>
+                      {this.props.user === comment.author ? (
+                        <button
+                          className="deleteButton"
+                          onClick={() =>
+                            this.deleteComment(comment.comment_id, index)
+                          }
+                        >
+                          Delete Comment
+                        </button>
+                      ) : null}
+                    </div>
                   </div>
                   <p>{comment.body}</p>
                 </li>

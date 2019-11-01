@@ -23,15 +23,16 @@ export default class CommentAdder extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Add a comment :
-          <input
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.newComment}
-          ></input>
-        </label>
+      <form id="commentAdderGrid" onSubmit={this.handleSubmit}>
+        <textarea
+          placeholder="Enter comment here."
+          id="commentAdder"
+          type="text"
+          rows="5"
+          cols="1"
+          onChange={this.handleChange}
+          value={this.state.newComment}
+        ></textarea>
         <button type="submit">Post Comment</button>
       </form>
     );

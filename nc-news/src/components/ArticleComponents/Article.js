@@ -34,6 +34,12 @@ export default class Article extends Component {
               <Link to={`/${article.topic}`}>{article.topic}</Link>
             </h3>{" "}
             <p>{article.body}</p>
+            <Link
+              id="commentLink"
+              to={`/comments/${this.props.topic}/${this.props.article_id}/${this.props.article_name}`}
+            >
+              Go to comments section
+            </Link>
           </>
         ) : (
           <p>Loading ...</p>
