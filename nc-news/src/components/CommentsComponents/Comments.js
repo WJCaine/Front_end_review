@@ -138,7 +138,7 @@ export default class Comments extends Component {
                     <div>
                       {utils.secondsToTimeString2(
                         (new Date() - new Date(comment.created_at)) / 1000
-                      )}{" "}
+                      ) || "0 minutes"}{" "}
                       ago
                     </div>
                     <div>

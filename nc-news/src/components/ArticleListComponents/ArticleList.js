@@ -141,7 +141,7 @@ export default class ArticleList extends Component {
                       {article.title}
                     </Link>
                     <div>
-                      <div>Posted by : {article.author}</div>
+                      <div className="user">Posted by : {article.author}</div>
                       <div>
                         {" "}
                         {utils.secondsToTimeString2(

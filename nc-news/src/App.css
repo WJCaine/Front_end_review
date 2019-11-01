@@ -119,16 +119,15 @@
 }
 
 ul#horizontal-list {
-  min-width: 696px;
   list-style: none;
-  padding-top: 20px;
+  padding: 20px;
   color: azure;
   text-align: center;
 }
 ul#horizontal-list li {
   display: inline;
-  margin: 0 1%;
   color: azure;
+  text-align: center;
 }
 .numbtn {
   color: white;
