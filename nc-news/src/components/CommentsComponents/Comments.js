@@ -154,7 +154,7 @@ export default class Comments extends Component {
                       ) : null}
                     </div>
                   </div>
-                  <p>{comment.body}</p>
+                  <p className="commentBody">{comment.body}</p>
                 </li>
               );
             })}
