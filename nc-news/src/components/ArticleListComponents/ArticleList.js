@@ -141,7 +141,7 @@ export default class ArticleList extends Component {
                       {article.title}
                     </Link>
                     <div>
-                      <div className="user">By : {article.author}</div>
+                      <div className="user">Posted by {article.author}</div>
                       <div className="time">
                         {utils.secondsToTimeString2(
                           (new Date() - new Date(article.created_at)) / 1000
